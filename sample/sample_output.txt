@@ -1,0 +1,231 @@
+Adding to server: Desktop PC
+Desktop PC connected to server
+Adding to server: Critical Server
+Critical Server connected to server
+Adding to server: Laptop
+Laptop connected to server
+Adding to server: Refrigerator
+Refrigerator connected to server
+Adding to server: Laptop
+Laptop connected to server
+Adding to server: Cable TV Box
+Cable TV Box connected to server
+Adding to server: TV Remote
+TV Remote connected to server
+Adding to server: Cellphone
+Cellphone connected to server
+Adding to server: Microwave
+Microwave connected to server
+Adding to server: Smart Oven
+Smart Oven connected to server
+Adding to server: Apple PC
+Apple PC connected to server
+Connecting Desktop PC to Critical Server
+	Desktop PC now connected to Critical Server
+	Critical Server now connected to Desktop PC
+Connecting Desktop PC to TV Remote
+	Desktop PC now connected to TV Remote
+	TV Remote now connected to Desktop PC
+Connecting Desktop PC to Smart Oven
+	Desktop PC now connected to Smart Oven
+	Smart Oven now connected to Desktop PC
+Connecting Desktop PC to Laptop
+	Desktop PC now connected to Laptop
+	Laptop now connected to Desktop PC
+Connecting Desktop PC to Apple PC
+	Desktop PC now connected to Apple PC
+	Apple PC now connected to Desktop PC
+Connecting Smart Oven to Refrigerator
+	Smart Oven now connected to Refrigerator
+	Refrigerator now connected to Smart Oven
+Connecting Laptop to Microwave
+	Laptop now connected to Microwave
+	Microwave now connected to Laptop
+Connecting Microwave to Refrigerator
+	Microwave now connected to Refrigerator
+	Refrigerator now connected to Microwave
+Connecting Cellphone to Cable TV Box
+	Cellphone now connected to Cable TV Box
+	Cable TV Box now connected to Cellphone
+Connecting Cellphone to TV Remote
+	Cellphone now connected to TV Remote
+	TV Remote now connected to Cellphone
+Connecting Apple PC to Smart Oven
+	Apple PC now connected to Smart Oven
+	Smart Oven now connected to Apple PC
+Day : 0
+	Hack occured on Desktop PC
+		Desktop PC infected by Netbuster
+	Desktop PC: Worm Netbuster is dormant
+Day : 1
+	Hack occured on Refrigerator
+		Refrigerator infected by Netbuster
+	Refrigerator: Worm Netbuster is dormant
+	Desktop PC infecting...
+		Worm Netbuster is incompatible with Critical Server
+		TV Remote infected by Netbuster
+		Smart Oven infected by Netbuster
+		Laptop infected by Netbuster
+		Apple PC infected by Netbuster
+	Apple PC: Worm Netbuster is dormant
+Day : 2
+	Hack occured on Desktop PC
+		Desktop PC infected by Netbuster
+	TV Remote: Worm Netbuster is dormant
+	Smart Oven: Worm Netbuster is dormant
+	Refrigerator infecting...
+		Smart Oven infected by Netbuster
+		Microwave infected by Netbuster
+	Microwave: Worm Netbuster is dormant
+	Laptop: Worm Netbuster is dormant
+	Desktop PC: Worm Netbuster is dormant
+	Apple PC infecting...
+		Desktop PC infected by Netbuster
+		Smart Oven infected by Netbuster
+Day : 3
+	Hack occured on Microwave
+		Microwave infected by Netbuster
+	TV Remote infecting...
+		Desktop PC infected by Netbuster
+		Cellphone infected by Netbuster
+	Smart Oven: Worm Netbuster is dormant
+	Refrigerator infecting...
+		Smart Oven infected by Netbuster
+		Microwave infected by Netbuster
+	Microwave: Worm Netbuster is dormant
+	Laptop infecting...
+		Desktop PC infected by Netbuster
+		Microwave infected by Netbuster
+	Desktop PC: Worm Netbuster is dormant
+	Cellphone: Worm Netbuster is dormant
+	Apple PC infecting...
+		Desktop PC infected by Netbuster
+		Smart Oven infected by Netbuster
+Day : 4
+	Hack occured on Cellphone
+		Cellphone infected by Netbuster
+	TV Remote infecting...
+		Desktop PC infected by Netbuster
+		Cellphone infected by Netbuster
+	Smart Oven: Worm Netbuster is dormant
+	Refrigerator infecting...
+		Smart Oven infected by Netbuster
+		Microwave infected by Netbuster
+	Microwave: Worm Netbuster is dormant
+	Laptop infecting...
+		Desktop PC infected by Netbuster
+		Microwave infected by Netbuster
+	Desktop PC: Worm Netbuster is dormant
+	Cellphone: Worm Netbuster is dormant
+	Apple PC infecting...
+		Desktop PC infected by Netbuster
+		Smart Oven infected by Netbuster
+Day : 5
+	Clock-In: Einav Genad Galili began working
+	Einav Genad Galili examining TV Remote
+		Worm Netbuster successfully removed from TV Remote
+	Einav Genad Galili examining Smart Oven
+		Worm Netbuster successfully removed from Smart Oven
+	Einav Genad Galili examining Refrigerator
+		Worm Netbuster successfully removed from Refrigerator
+	Microwave: Worm Netbuster is dormant
+	Laptop infecting...
+		Desktop PC infected by Netbuster
+		Microwave infected by Netbuster
+	Desktop PC: Worm Netbuster is dormant
+	Cellphone infecting...
+		Cable TV Box infected by Netbuster
+		TV Remote infected by Netbuster
+	Cable TV Box: Worm Netbuster is dormant
+	Apple PC infecting...
+		Desktop PC infected by Netbuster
+		Smart Oven infected by Netbuster
+Day : 6
+	Einav Genad Galili examining TV Remote
+		Worm Netbuster successfully removed from TV Remote
+	Einav Genad Galili examining Smart Oven
+		Worm Netbuster successfully removed from Smart Oven
+	Einav Genad Galili examining Refrigerator
+	Microwave: Worm Netbuster is dormant
+	Laptop infecting...
+		Desktop PC infected by Netbuster
+		Microwave infected by Netbuster
+	Desktop PC: Worm Netbuster is dormant
+	Cellphone infecting...
+		Cable TV Box infected by Netbuster
+		TV Remote infected by Netbuster
+	Cable TV Box: Worm Netbuster is dormant
+	Apple PC infecting...
+		Desktop PC infected by Netbuster
+		Smart Oven infected by Netbuster
+Day : 7
+	Einav Genad Galili examining TV Remote
+		Worm Netbuster successfully removed from TV Remote
+	Einav Genad Galili examining Smart Oven
+		Worm Netbuster successfully removed from Smart Oven
+	Einav Genad Galili examining Refrigerator
+	Einav Genad Galili is taking a break
+	Microwave: Worm Netbuster is dormant
+	Laptop infecting...
+		Desktop PC infected by Netbuster
+		Microwave infected by Netbuster
+	Desktop PC: Worm Netbuster is dormant
+	Cellphone infecting...
+		Cable TV Box infected by Netbuster
+		TV Remote infected by Netbuster
+	Cable TV Box: Worm Netbuster is dormant
+	Apple PC infecting...
+		Desktop PC infected by Netbuster
+		Smart Oven infected by Netbuster
+Day : 8
+	Einav Genad Galili is back to work
+	TV Remote: Worm Netbuster is dormant
+	Smart Oven: Worm Netbuster is dormant
+	Microwave: Worm Netbuster is dormant
+	Laptop infecting...
+		Desktop PC infected by Netbuster
+		Microwave infected by Netbuster
+	Desktop PC: Worm Netbuster is dormant
+	Cellphone infecting...
+		Cable TV Box infected by Netbuster
+		TV Remote infected by Netbuster
+	Cable TV Box: Worm Netbuster is dormant
+	Apple PC infecting...
+		Desktop PC infected by Netbuster
+		Smart Oven infected by Netbuster
+Day : 9
+	Einav Genad Galili examining TV Remote
+		Worm Netbuster successfully removed from TV Remote
+	Einav Genad Galili examining Smart Oven
+		Worm Netbuster successfully removed from Smart Oven
+	Einav Genad Galili examining Refrigerator
+	Microwave: Worm Netbuster is dormant
+	Laptop infecting...
+		Desktop PC infected by Netbuster
+		Microwave infected by Netbuster
+	Desktop PC: Worm Netbuster is dormant
+	Cellphone infecting...
+		Cable TV Box infected by Netbuster
+		TV Remote infected by Netbuster
+	Cable TV Box: Worm Netbuster is dormant
+	Apple PC infecting...
+		Desktop PC infected by Netbuster
+		Smart Oven infected by Netbuster
+Day : 10
+	Einav Genad Galili examining TV Remote
+		Worm Netbuster successfully removed from TV Remote
+	Einav Genad Galili examining Smart Oven
+		Worm Netbuster successfully removed from Smart Oven
+	Einav Genad Galili examining Refrigerator
+	Microwave: Worm Netbuster is dormant
+	Laptop infecting...
+		Desktop PC infected by Netbuster
+		Microwave infected by Netbuster
+	Desktop PC: Worm Netbuster is dormant
+	Cellphone infecting...
+		Cable TV Box infected by Netbuster
+		TV Remote infected by Netbuster
+	Cable TV Box: Worm Netbuster is dormant
+	Apple PC infecting...
+		Desktop PC infected by Netbuster
+		Smart Oven infected by Netbuster
