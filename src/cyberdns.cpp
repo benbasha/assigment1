@@ -33,6 +33,16 @@ std::vector<std::string> CyberDNS::GetCyberPCList() {// Return list of PC's as a
 
     return pcList;
 }
+
+void CyberDNS::decreaseComputersInfectionTime(){
+
+    std::map<const std::string, CyberPC &>::const_iterator it;
+    for(it = CyberDNS::cyber_DNS_.begin(); it != CyberDNS::cyber_DNS_.end(); it++) {
+        it->second.decreaseComputerInfectionTime();
+    }
+
+}
+
 /*
 public:
 CyberDNS();

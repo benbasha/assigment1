@@ -23,8 +23,11 @@ public:
 	void AddConnection(std::string  second_pc);					// Add a connection to this PC
 	void Infect(CyberWorm & worm); 								// Add a worm to this PC
 	void Run(const CyberDNS & server); 							// Activate PC and infect others if worm is active	
-	void Disinfect();											// called by cyber expert, disinfect PC
+	void Disinfect();
+	// called by cyber expert, disinfect PC
 	//Add additional functions here if necessary
+	std::string getOs();
+	void infectNetwork();
 	
 };
 

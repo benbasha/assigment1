@@ -16,6 +16,7 @@ void CyberPC::AddConnection(std::string second_pc) {
 
 void CyberPC::Infect(CyberWorm & worm) {
     cyber_worm_ = &worm;
+    cyber_pc_time_to_infect_ = worm.getWormDormancyTime();
 }
 
 void CyberPC::Run(const CyberDNS & server) {
@@ -26,12 +27,36 @@ void CyberPC::Disinfect() {
 
 }
 
+void decreaseComputerInfectionTime(){
+
+    if (CyberPC::cyber_pc_time_to_infect_ > 0){
+        CyberPC::cyber_pc_time_to_infect_ -- ;
+
+        if (CyberPC::cyber_pc_time_to_infect_ == 0){
+            cyber_worm_->addInfectedComputer();
+            //COMPUTER INFECTED! NOW INFECT NETWORK!!
+            infectNetwork();
+        }
+    }
+
+
+}
+
+ std::string getOs(){
+
+    return CyberPC::cyber_pc_os_;
+}
+
+void infectNetwork() {
+
+}
+
 /*
 private:
-    const std::string cyber_pc_os_;
-    const std::string cyber_pc_name_;
-    std::vector<std::string> cyber_pc_connections_;
-    CyberWorm * cyber_worm_ = NULL;
+    const std::string cyber_pc_os_; done
+    const std::string cyber_pc_name_; done
+    std::vector<std::string> cyber_pc_connections_; done
+    CyberWorm * cyber_worm_ = NULL; done
     int cyber_pc_time_to_infect_;
     CyberPC(); // Prevent the use of an empty constructor
 
