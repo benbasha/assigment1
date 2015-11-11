@@ -1,3 +1,5 @@
+#endif
+
 #ifndef CYBERDNS_H
 #define CYBERDNS_H
 #include <iostream>
