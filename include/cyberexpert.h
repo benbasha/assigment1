@@ -13,12 +13,16 @@ private:
     const int cyber_expert_work_time_;
     const int cyber_expert_rest_time_;
     const int cyber_expert_efficiency_;
+	int cyber_expert_DaysUntilRest ;
     CyberExpert(); // Prevent the use of an empty constructor
 	// Add your own variables here
  
 public:
     CyberExpert(std::string cyber_expert_name_, int cyber_expert_work_time_, int cyber_expert_rest_time_, int cyber_expert_efficiency_);
- 	void Clean(CyberPC & cyber_pc); 
+ 	void Clean(CyberPC & cyber_pc);
+	bool isWorking();
+	void decreasWorkTime();
+	int getEfficiancy();
 	// Add your own functions here
 };
 

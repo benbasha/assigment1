@@ -31,6 +31,10 @@ void CyberPC::Run(const CyberDNS & server) {
 
 void CyberPC::Disinfect() {
 
+    //cleaning the worm
+    cyber_worm_ = NULL ;
+    cyber_pc_time_to_infect_ = 0;
+
 }
 
 bool CyberPC::decreaseComputerInfectionTimeAndReturnIfGotInfectedNow(){
