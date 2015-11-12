@@ -27,28 +27,24 @@ void CyberPC::Disinfect() {
 
 }
 
-void decreaseComputerInfectionTime(){
+bool CyberPC::decreaseComputerInfectionTimeAndReturnIfGotInfectedNow(){
 
     if (CyberPC::cyber_pc_time_to_infect_ > 0){
         CyberPC::cyber_pc_time_to_infect_ -- ;
-
         if (CyberPC::cyber_pc_time_to_infect_ == 0){
             cyber_worm_->addInfectedComputer();
             //COMPUTER INFECTED! NOW INFECT NETWORK!!
-            infectNetwork();
+            return true;
         }
     }
 
-
+    return false;
 }
 
- std::string getOs(){
+
+ std::string CyberPC::getOs(){
 
     return CyberPC::cyber_pc_os_;
-}
-
-void infectNetwork() {
-
 }
 
 /*

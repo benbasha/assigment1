@@ -38,9 +38,22 @@ void CyberDNS::decreaseComputersInfectionTime(){
 
     std::map<const std::string, CyberPC &>::const_iterator it;
     for(it = CyberDNS::cyber_DNS_.begin(); it != CyberDNS::cyber_DNS_.end(); it++) {
-        it->second.decreaseComputerInfectionTime();
+        if (it->second.decreaseComputerInfectionTime()){
+            //Time to infect network!
+            infectNetwork(it->second);
+        }
     }
 
+}
+
+void infectNetwork(CyberPC & cyberPC) {
+    std::vector<std::string> connections(cyberPC.getConnections());
+    std::map<const std::string, CyberPC &>::const_iterator dsn_it;
+
+    std::vector<std::string>::iterator it;
+    for(connections_it = connections.begin(); connections_it != connections.end(); ++connections_it) {
+        dsn_it = CyberDNS::cyber_DNS_.find(*(connections_it).);
+    }
 }
 
 /*
