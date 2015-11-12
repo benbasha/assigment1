@@ -35,9 +35,11 @@ void readNetwork(CyberDNS &cyberDNS){
                         CyberPC &pointB = cyberDNS.GetCyberPC(v.second.get<std::string>("pointB"));
 
                         pointA.AddConnection(pointB.getName());
+                        std::cout << pointA.getName() + " now connected to " + pointB.getName() << std::endl;
                         pointB.AddConnection(pointA.getName());
+                        std::cout << pointB.getName() + " now connected to " + pointA.getName() << std::endl;
 
-                        
+                        //std::cout << pointA.getName() + "<------>" + pointB.getName() << std::endl;
 
                     }
                 };

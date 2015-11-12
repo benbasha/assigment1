@@ -4,6 +4,7 @@
 
 CyberPC::CyberPC(std::string cyber_pc_os, std::string cyber_pc_name):cyber_pc_os_(cyber_pc_os), cyber_pc_name_(cyber_pc_name){
     justInfected = false;
+    std::cout << getName() + " connected to server" << std::endl;
 }
 
 const std::string CyberPC::getName() {
