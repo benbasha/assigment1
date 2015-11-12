@@ -23,6 +23,7 @@ public:
 	void decreaseComputersInfectionTime();
 	void infectNetwork(CyberPC & cyberPC);
 
+    std::map<const std::string, CyberPC &>::const_iterator getMapIterator();
 };
 
 #endif
