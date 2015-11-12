@@ -11,7 +11,7 @@ int main() {
     std::cout << "\n\nnow reading computers\n";
     readComputers(cyberDNS);
 
-    cyberDNS.GetCyberPCList();
+    //cyberDNS.GetCyberPCList();
 
     std::cout << "\n\nnow reading networks\n";
 
@@ -19,6 +19,6 @@ int main() {
 
     std::cout << "\n\nnow reading events\n";
 
-    //readEvents(cyberDNS);
+    readEvents(cyberDNS);
 
 }

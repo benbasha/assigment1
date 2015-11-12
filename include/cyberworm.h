@@ -22,6 +22,12 @@ public:
 	const int getWormDormancyTime();
 	// Add your own functions here
 
+	std::string getOs() {
+		return cyber_worm_os_;
+	};
+	std::string getName() {
+		return cyber_worm_name_;
+	};
 
 	void addInfectedComputer();
 

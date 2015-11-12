@@ -13,12 +13,16 @@ const std::string CyberPC::getName() {
 
 void CyberPC::AddConnection(std::string second_pc) {
     cyber_pc_connections_.push_back(second_pc);
+
+    std::cout << "  " + getName() + " now connected to " + second_pc << std::endl;
 }
 
 void CyberPC::Infect(CyberWorm & worm) {
     cyber_worm_ = &worm;
     cyber_pc_time_to_infect_ = worm.getWormDormancyTime();
     justInfected = true;
+    std::cout << "Hack occured on " + getName() << std::endl;
+    std::cout << "  " + getName() + " infected by " + worm.getName() << std::endl;
 }
 
 void CyberPC::Run(const CyberDNS & server) {

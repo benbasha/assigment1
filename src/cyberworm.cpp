@@ -8,7 +8,7 @@ CyberWorm::CyberWorm(std::string cyber_worm_os, std::string cyber_worm_name, int
 //copy construvtor
 CyberWorm::CyberWorm(const CyberWorm & other):cyber_worm_os_(other.cyber_worm_os_), cyber_worm_name_(other.cyber_worm_name_),
                                               cyber_worm_dormancy_time_(other.cyber_worm_dormancy_time_) {
-
+//TODO: check why its ok!
 }
 
 CyberWorm::~CyberWorm(){
