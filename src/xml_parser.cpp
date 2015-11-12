@@ -54,6 +54,8 @@ void readEvents(CyberDNS &cyberDNS){
 
     int i = 0;
 
+    std::vector<&CyberExpert> cyberExperts;
+
     read_xml("./events.xml", pt);
     BOOST_FOREACH(const ptree::value_type &v, pt.get_child(""))
     {
@@ -75,13 +77,31 @@ void readEvents(CyberDNS &cyberDNS){
                 }
             }
             else if (v.first == "clock-in"){
+                std::string name(v.second.get<std::string>("name"));
+                int workTime(v.second.get<int>("workTime"));
+                int restTime(v.second.get<int>("restTime"));
+                int efficiency(v.second.get<int>("efficiency"));
+
+                CyberExpert expert = new CyberExpert(name, workTime, restTime, efficiency);
+                cyberExperts.push_back(expert);
 
             }
             else if (v.first == "termination") {
 
             }
 
+        std::map<const std::string, CyberPC &>::const_iterator computer_it = CyberDNS::getMapIterator();
+        std::vector<CyberExpert>::iterator expert_it;
+        for(expert_it = expert.begin(); expert_it != expert.end(); ++expert_it) {
+            if (expert_it->isWorking()) {
+                for (int i = 0; i < expert_it->getEfficiency(); i++) {
+                    expert_it->Clean(computer_it->second);
+                    computer_it++;
+                }
+            }
 
+            expert_it->decreaseWorkTime();
+        }
         //one day left, decrease infects time
         cyberDNS.decreaseComputersInfectionTime();
 
@@ -89,10 +109,7 @@ void readEvents(CyberDNS &cyberDNS){
         i++;
     }
 
-
-
-
-    }
+}
 
 
 
