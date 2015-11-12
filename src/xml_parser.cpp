@@ -13,8 +13,8 @@ void readComputers (CyberDNS &cyberDNS){
     {
         if (v.first == "computer") {
             //do we need it ????
-            CyberPC pc(v.second.get<std::string>("os"),v.second.get<std::string>("name"));
-            cyberDNS.AddPC(pc);
+            CyberPC *pc = new CyberPC(v.second.get<std::string>("os"),v.second.get<std::string>("name"));
+            cyberDNS.AddPC(*pc);
             //std::cout << v.second.get<std::string>("name") << std::endl;
             //std::cout << v.second.get<std::string>("os") << std::endl;
         }
@@ -31,16 +31,14 @@ void readNetwork(CyberDNS &cyberDNS){
     BOOST_FOREACH(const ptree::value_type &v, pt.get_child(""))
                 {
                     if (v.first == "wire") {
-                        CyberPC *tmpPC = &cyberDNS.GetCyberPC(v.second.get<std::string>("pointA"));
-                        CyberPC *tmpPC1 = &cyberDNS.GetCyberPC(v.second.get<std::string>("pointB"));
+                        CyberPC &pointA = cyberDNS.GetCyberPC(v.second.get<std::string>("pointA"));
+                        CyberPC &pointB = cyberDNS.GetCyberPC(v.second.get<std::string>("pointB"));
 
-                        tmpPC->AddConnection(tmpPC1->getName());
-                        tmpPC1->AddConnection(tmpPC->getName());
+                        pointA.AddConnection(pointB.getName());
+                        pointB.AddConnection(pointA.getName());
 
-                        //CyberPC pc(v.second.get<std::string>("pointA"),v.second.get<std::string>("pointB"));
-                        //cyberDNS.AddPC(pc);
-                        //std::cout << v.second.get<std::string>("name") << std::endl;
-                        //std::cout << v.second.get<std::string>("os") << std::endl;
+                        
+
                     }
                 };
 
@@ -60,7 +58,7 @@ void readEvents(CyberDNS &cyberDNS){
                 //new worm details
                 std::string name(v.second.get<std::string>("wornName"));
                 std::string os(v.second.get<std::string>("wormOs"));
-                int dormant_time(v.second.get<std::string>("wormDormancy"));
+                int dormant_time(v.second.get<int>("wormDormancy"));
                 std::string computer(v.second.get<std::string>("computer"));
                 CyberWorm *worm = new CyberWorm(os, name, dormant_time);
 
@@ -77,13 +75,9 @@ void readEvents(CyberDNS &cyberDNS){
 
             }
 
+        //one day left, decrease infects time
+        cyberDNS.decreaseComputersInfectionTime();
 
-        //use itertor to go throw the map and update infected PC's infection time
-        std::map<const std::string, CyberPC &>::const_iterator it;
-        for(it = CyberDNS::cyberDNS.begin(); it != CyberDNS::cyberDNS.end(); it++) {
-            it->second.decreaseComputersInfectionTime();
-            //std::cout << it->first << std::endl;
-        }
 
 
     }

@@ -20,8 +20,9 @@ public:
 	std::vector<std::string> GetCyberPCList(); 		// Return list of PC's as a vector of strings.
 													// All access to PC objects should use this function
 													// Do not store pointers elsewhere!
-	void decreaseComputersInfectionTime(std::map<const std::string, CyberPC &> cyber_DNS_); //pass cyber_DNS_ to infect other computers at network
+	void decreaseComputersInfectionTime();
 	void infectNetwork(CyberPC & cyberPC);
+
 };
 
 #endif
