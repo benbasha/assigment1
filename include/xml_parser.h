@@ -4,6 +4,7 @@
 #define XML_PARSER_H
 
 #include "cyberpc.h"
+#include "cyberexpert.h"
 
 void readComputers(CyberDNS &cyberDNS);
 

@@ -62,6 +62,10 @@ void CyberDNS::infectNetwork(CyberPC & cyberPC) {
     }
 }
 
+std::map<const std::string, CyberPC &>::const_iterator getMapIterator() {
+    return CyberDNS::cyber_DNS_.begin();
+};
+
 /*
 public:
 CyberDNS();
