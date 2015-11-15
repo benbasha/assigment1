@@ -24,6 +24,9 @@ public:
 	void decreasWorkTime();
 	int getEfficiancy();
 	// Add your own functions here
+    std::string getName(){
+        return cyber_expert_name_;
+    }
 };
 
 
