@@ -21,7 +21,7 @@ public:
 													// All access to PC objects should use this function
 													// Do not store pointers elsewhere!
 	void decreaseComputersInfectionTime();
-	void infectNetwork(CyberPC & cyberPC);
+	void infectNetwork(std::string pcName) const;
 
     std::map<const std::string, CyberPC &>::const_iterator getMapIterator();
 };

@@ -25,8 +25,25 @@ void CyberPC::Infect(CyberWorm & worm) {
     std::cout << "  " + getName() + " infected by " + worm.getName() << std::endl;
 }
 
-void CyberPC::Run(const CyberDNS & server) {
+void CyberPC::Run(const CyberDNS & server) {        // Activate PC and infect others if worm is active
 
+   server.infectNetwork(cyber_pc_name_);
+
+    /*
+    std::vector<std::string> connections(this->getConnections());
+    std::map<const std::string, CyberPC &>::const_iterator dns_it;
+
+    std::vector<std::string>::iterator connections_it;
+    for(connections_it = connections.begin(); connections_it != connections.end(); ++connections_it) {
+
+        std::map<const std::string, CyberPC &>::const_iterator dns_it = server.find(*connections_it);
+
+        //dns_it = CyberDNS::server.find(*(connections_it));
+        if (dns_it->second.getOs() == this->getOs()) {
+            dns_it->second.Infect(*(this->getWorm()));
+        }
+    }
+*/
 }
 
 void CyberPC::Disinfect() {
@@ -54,23 +71,3 @@ bool CyberPC::decreaseComputerInfectionTimeAndReturnIfGotInfectedNow(){
     return false;
 }
 
-
-/*
-private:
-    const std::string cyber_pc_os_; done
-    const std::string cyber_pc_name_; done
-    std::vector<std::string> cyber_pc_connections_; done
-    CyberWorm * cyber_worm_ = NULL; done
-    int cyber_pc_time_to_infect_;
-    CyberPC(); // Prevent the use of an empty constructor
-
-public:
-    CyberPC(std::string cyber_pc_os, std::string cyber_pc_name);// Only use this constructor
-    const std::string getName();
-	void AddConnection(std::string  second_pc);					// Add a connection to this PC
-	void Infect(CyberWorm & worm); 								// Add a worm to this PC
-	void Run(const CyberDNS & server); 							// Activate PC and infect others if worm is active
-	void Disinfect();											// called by cyber expert, disinfect PC
-	//Add additional functions here if necessary
-
-*/

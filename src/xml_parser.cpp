@@ -74,7 +74,9 @@ void readEvents(CyberDNS &cyberDNS){
                 //check if computer in worm favorite os and infect it
                 CyberPC *computerToInfect = &cyberDNS.GetCyberPC(computer);
                 if (computerToInfect->getOs() == os) {
+                    //calling to Run func in order to activate PC and infect others
                     computerToInfect->Infect(*worm);
+                    computerToInfect->Run(cyberDNS);
                 }
             }
             else if (v.first == "clock-in"){

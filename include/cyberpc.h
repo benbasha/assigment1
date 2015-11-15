@@ -39,6 +39,7 @@ public:
 	CyberWorm* getWorm() {
 		return cyber_worm_;
 	};
+
 };
 
 
