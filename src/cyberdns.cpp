@@ -63,6 +63,8 @@ void CyberDNS::infectNetwork(std::string pcName) const{
 
 
     std::vector<std::string>::iterator connections_it;
+
+    std::cout <<"   "<< pcName << " infecting..." <<std::endl;
     for(connections_it = connections.begin(); connections_it != connections.end(); ++connections_it) {
         dns_it = CyberDNS::cyber_DNS_.find(*(connections_it));
         if (dns_it->second.getOs() == cyberPC.getOs()) {
