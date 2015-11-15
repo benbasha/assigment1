@@ -14,6 +14,7 @@ void readComputers (CyberDNS &cyberDNS){
     {
         if (v.first == "computer") {
             //do we need it ????
+            std::cout << "Adding to server: " << v.second.get<std::string>("name") << std::endl;
             CyberPC *pc = new CyberPC(v.second.get<std::string>("os"),v.second.get<std::string>("name"));
             cyberDNS.AddPC(*pc);
             //std::cout << v.second.get<std::string>("name") << std::endl;
@@ -78,7 +79,8 @@ void readEvents(CyberDNS &cyberDNS){
                 if (computerToInfect->getOs() == os) {
                     //calling to Run func in order to activate PC and infect others
                     computerToInfect->Infect(*worm);
-                    computerToInfect->Run(cyberDNS);
+                    std::cout << "  Desktop PC: Worm "<< name << "is dormant" << std::endl;
+                    //computerToInfect->Run(cyberDNS);
                 }
             }
             else if (v->first == "clock-in") {
