@@ -54,21 +54,23 @@ void readEvents(CyberDNS &cyberDNS){
     ptree pt;
 
     int i = 0;
+    int terminate = 0;
 
     std::vector<CyberExpert*> cyberExperts;
 
     read_xml("./events.xml", pt);
-    BOOST_FOREACH(const ptree::value_type &v, pt.get_child(""))
+    boost::property_tree::ptree::iterator v = pt.get_child("").begin();
+    while (v != pt.end() || terminate >= 0)
     {
 
         std::cout << "\nDay : " << i << std::endl;
-
-            if (v.first == "hack") {
+        if (v != pt.end()) {
+            if (v->first == "hack") {
                 //new worm details
-                std::string name(v.second.get<std::string>("wormName"));
-                std::string os(v.second.get<std::string>("wormOs"));
-                int dormant_time(v.second.get<int>("wormDormancy"));
-                std::string computer(v.second.get<std::string>("computer"));
+                std::string name(v->second.get<std::string>("wormName"));
+                std::string os(v->second.get<std::string>("wormOs"));
+                int dormant_time(v->second.get<int>("wormDormancy"));
+                std::string computer(v->second.get<std::string>("computer"));
                 CyberWorm *worm = new CyberWorm(os, name, dormant_time);
 
                 //check if computer in worm favorite os and infect it
@@ -79,18 +81,23 @@ void readEvents(CyberDNS &cyberDNS){
                     computerToInfect->Run(cyberDNS);
                 }
             }
-            else if (v.first == "clock-in"){
-                const std::string name(v.second.get<std::string>("name"));
-                const int workTime(v.second.get<int>("workTime"));
-                const int restTime(v.second.get<int>("restTime"));
-                const int efficiency(v.second.get<int>("efficiency"));
+            else if (v->first == "clock-in") {
+                const std::string name(v->second.get<std::string>("name"));
+                const int workTime(v->second.get<int>("workTime"));
+                const int restTime(v->second.get<int>("restTime"));
+                const int efficiency(v->second.get<int>("efficiency"));
 
                 cyberExperts.push_back(new CyberExpert(name, workTime, restTime, efficiency));
 
             }
-            else if (v.first == "termination") {
+            else if (v->first == "termination") {
+                int time(v->second.get<int>("time"));
+                terminate = time - i;
 
             }
+
+            v++;
+        }
 
         std::map<const std::string, CyberPC &>::const_iterator computer_it = cyberDNS.getMapIterator();
         std::vector<CyberExpert*>::iterator expert_it;
@@ -99,18 +106,19 @@ void readEvents(CyberDNS &cyberDNS){
                 for (int i = 0; i < (*expert_it)->getEfficiancy(); i++) {
                     (*expert_it)->Clean(computer_it->second);
                     computer_it++;
+                    //std::cout << (*expert_it)->getName() << "\n\n\n";
                 }
             }
 
             (*expert_it)->decreasWorkTime();
 
-            std::cout << (*expert_it)->getName() << "\n\n\n";
         }
         //one day left, decrease infects time
         cyberDNS.decreaseComputersInfectionTime();
 
 
         i++;
+        terminate--;
     }
 
 }

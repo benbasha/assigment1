@@ -11,6 +11,7 @@ CyberWorm::CyberWorm(const CyberWorm & other):cyber_worm_os_(other.cyber_worm_os
 //TODO: check why its ok!
 }
 
+//check if this is ok
 CyberWorm::~CyberWorm(){
 
     if (infectedComputers == 0 )
@@ -25,6 +26,7 @@ const int CyberWorm::getWormDormancyTime(){
 void CyberWorm::addInfectedComputer() {
     CyberWorm::infectedComputers++;
 }
+
 
 
 

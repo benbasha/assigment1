@@ -21,8 +21,8 @@ void CyberPC::Infect(CyberWorm & worm) {
     cyber_worm_ = &worm;
     cyber_pc_time_to_infect_ = worm.getWormDormancyTime();
     justInfected = true;
-    std::cout << "Hack occured on " + getName() << std::endl;
-    std::cout << "  " + getName() + " infected by " + worm.getName() << std::endl;
+    std::cout << "  Hack occured on " + getName() << std::endl;
+    std::cout << "      " + getName() + " infected by " + worm.getName() << std::endl;
 }
 
 void CyberPC::Run(const CyberDNS & server) {        // Activate PC and infect others if worm is active
@@ -47,6 +47,12 @@ void CyberPC::Run(const CyberDNS & server) {        // Activate PC and infect ot
 }
 
 void CyberPC::Disinfect() {
+
+    if (cyber_worm_ != NULL) {
+        std::cout << "      Worm " + cyber_worm_->getName() + " successfully removed from " + getName() << std::endl;
+        if (cyber_worm_->decreaseInfectedComputers() == 0)
+            delete cyber_worm_;
+    }
 
     //cleaning the worm
     cyber_worm_ = NULL ;

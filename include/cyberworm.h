@@ -32,6 +32,9 @@ public:
 	void addInfectedComputer();
 
 	virtual ~CyberWorm();
+	int decreaseInfectedComputers() {
+		return --infectedComputers;
+	}
 };
 
 
