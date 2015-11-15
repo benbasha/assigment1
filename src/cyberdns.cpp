@@ -40,11 +40,14 @@ void CyberDNS::decreaseComputersInfectionTime(){
     //use itertor to go throw the map and update infected PC's infection time
     std::map<const std::string, CyberPC &>::const_iterator it;
     for(it = CyberDNS::cyber_DNS_.begin(); it != CyberDNS::cyber_DNS_.end(); it++) {
-        if (it->second.decreaseComputerInfectionTimeAndReturnIfGotInfectedNow()){
+
+        it->second.decreaseComputerInfectionTimeAndReturnIfGotInfectedNow(*this);
+
+       /*f (it->second.decreaseComputerInfectionTimeAndReturnIfGotInfectedNow()){
             //Time to infect network!
             //infectNetwork(it->second); //pass cyberPC   ---before my change
             it->second.Run(*this);
-        }
+        }*/
     }
 
 
@@ -64,6 +67,12 @@ void CyberDNS::infectNetwork(std::string pcName) const{
         dns_it = CyberDNS::cyber_DNS_.find(*(connections_it));
         if (dns_it->second.getOs() == cyberPC.getOs()) {
             dns_it->second.Infect(*(cyberPC.getWorm()));
+            std::cout <<"       " << dns_it->second.getName() << " infected by " << cyberPC.getWorm()->getName() << std::endl;
+
+        }
+        else{
+            std::cout << "      Worm Netbuster is incompatible with " << dns_it->second.getName() << std::endl;
+
         }
     }
 }

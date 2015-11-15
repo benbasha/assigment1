@@ -32,7 +32,7 @@ public:
 	std::string getOs(){
 		return CyberPC::cyber_pc_os_;
 	}
-	bool decreaseComputerInfectionTimeAndReturnIfGotInfectedNow(); //decrease specific computer infected time and return if the computer is infected now+
+	void decreaseComputerInfectionTimeAndReturnIfGotInfectedNow(const CyberDNS & server); //decrease specific computer infected time and return if the computer is infected now+
 	std::vector<std::string> getConnections() {
 		return cyber_pc_connections_;
 	};

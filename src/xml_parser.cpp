@@ -78,9 +78,10 @@ void readEvents(CyberDNS &cyberDNS){
                 CyberPC *computerToInfect = &cyberDNS.GetCyberPC(computer);
                 if (computerToInfect->getOs() == os) {
                     //calling to Run func in order to activate PC and infect others
+                    std::cout <<"   Hack occured on " << computerToInfect->getName() << std::endl;
                     computerToInfect->Infect(*worm);
-                    std::cout << "  Desktop PC: Worm "<< name << "is dormant" << std::endl;
-                    //computerToInfect->Run(cyberDNS);
+                    std::cout << "      " + computerToInfect->getName() + " infected by " + name << std::endl;
+                    std::cout <<"   " <<computerToInfect->getName() << ": Worm "<< name << " is dormant" << std::endl;
                 }
             }
             else if (v->first == "clock-in") {
