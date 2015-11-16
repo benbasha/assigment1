@@ -25,23 +25,19 @@ public:
 	void Infect(CyberWorm & worm); 								// Add a worm to this PC
 	void Run(const CyberDNS & server); 							// Activate PC and infect others if worm is active	
 	void Disinfect();
-	virtual ~CyberPC();
+
 	// called by cyber expert, disinfect PC
 
 	//Add additional functions here if necessary
-	std::string getOs(){
-		return CyberPC::cyber_pc_os_;
-	}
-	void decreaseComputerInfectionTime(const CyberDNS & server); //decrease specific computer infected time and return if the computer is infected now+
-	std::vector<std::string> getConnections() {
-		return cyber_pc_connections_;
-	};
-	CyberWorm* getWorm() {
-		return cyber_worm_;
-	};
-
+	std::string getOs();
+	std::vector<std::string> getConnections();
+	CyberWorm* getWorm();
 	bool isJustInfected();
+
 	void setBoolToFalse();
+	void decreaseComputerInfectionTime(const CyberDNS & server); //decrease specific computer infected time and return if the computer is infected now+
+
+	void deleteWorm();
 };
 
 

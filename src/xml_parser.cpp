@@ -15,8 +15,8 @@ void readComputers (CyberDNS &cyberDNS){
         if (v.first == "computer") {
             //do we need it ????
             std::cout << "Adding to server: " << v.second.get<std::string>("name") << std::endl;
-            CyberPC *pc = new CyberPC(v.second.get<std::string>("os"),v.second.get<std::string>("name"));
-            cyberDNS.AddPC(*pc);
+            CyberPC * pc = new CyberPC(v.second.get<std::string>("os"),v.second.get<std::string>("name"));
+            cyberDNS.AddPC(*(pc));
             //std::cout << v.second.get<std::string>("name") << std::endl;
             //std::cout << v.second.get<std::string>("os") << std::endl;
         }
@@ -39,7 +39,6 @@ void readNetwork(CyberDNS &cyberDNS){
                         std::cout << "Connecting " + pointA.getName() + " to " + pointB.getName() << std::endl;
                         pointA.AddConnection(pointB.getName());
                         pointB.AddConnection(pointA.getName());
-
 
                         //std::cout << pointA.getName() + "<------>" + pointB.getName() << std::endl;
 
@@ -83,6 +82,9 @@ void readEvents(CyberDNS &cyberDNS){
                     //std::cout << "      " + computerToInfect->getName() + " infected by " + name << std::endl;
                     //std::cout <<"   " <<computerToInfect->getName() << ": Worm "<< name << " is dormant" << std::endl;
                 }
+
+                delete worm;
+
             }
             else if (v->first == "clock-in") {
                 const std::string name(v->second.get<std::string>("name"));
@@ -98,10 +100,11 @@ void readEvents(CyberDNS &cyberDNS){
                 terminate = time - i;
 
             }
+
             v++;
         }
 
-        std::map<const std::string, CyberPC &>::const_iterator computer_it = cyberDNS.getMapIterator();
+        std::map<const std::string, CyberPC &>::const_reverse_iterator computer_it = cyberDNS.getMapIterator();
         std::vector<CyberExpert*>::iterator expert_it;
         for(expert_it = cyberExperts.begin(); expert_it != cyberExperts.end(); ++expert_it) {
             if ((*expert_it)->isWorking()) {
@@ -113,6 +116,9 @@ void readEvents(CyberDNS &cyberDNS){
             }
 
             (*expert_it)->decreasWorkTime();
+
+            if (terminate == 0)
+                delete *expert_it;
 
         }
         //one day left, decrease infects time
@@ -127,6 +133,7 @@ void readEvents(CyberDNS &cyberDNS){
     }
 
     cyberDNS.completeSimulation();
+
 
 }
 

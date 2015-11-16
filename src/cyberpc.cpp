@@ -3,7 +3,6 @@
 
 
 CyberPC::CyberPC(std::string cyber_pc_os, std::string cyber_pc_name):cyber_pc_os_(cyber_pc_os), cyber_pc_name_(cyber_pc_name){
-    justInfected = false;
     cyber_pc_time_to_infect_ = 0;
     std::cout << getName() + " connected to server" << std::endl;
 }
@@ -19,9 +18,14 @@ void CyberPC::AddConnection(std::string second_pc) {
 }
 
 void CyberPC::Infect(CyberWorm & worm) {
-    cyber_worm_ = &worm;
+    //std::cout << worm.getName() + "\n\n";
+
+    if (cyber_worm_ != NULL)
+        delete cyber_worm_;
+
+    cyber_worm_ = new CyberWorm(worm);
     cyber_pc_time_to_infect_ = worm.getWormDormancyTime();
-    justInfected = true;
+
    // std::cout << "  Hack occured on " + getName() << std::endl;
     std::cout << "      " + getName() + " infected by " + worm.getName() << std::endl;
 }
@@ -51,13 +55,16 @@ void CyberPC::Disinfect() {
 
     if (cyber_worm_ != NULL) {
         std::cout << "      Worm " + cyber_worm_->getName() + " successfully removed from " + getName() << std::endl;
-        if (cyber_worm_->decreaseInfectedComputers() == 0)
-            delete cyber_worm_;
     }
+
+    if (cyber_worm_ != NULL)
+        delete cyber_worm_;
 
     //cleaning the worm
     cyber_worm_ = NULL ;
     cyber_pc_time_to_infect_ = 0;
+
+
 
 }
 
@@ -94,9 +101,18 @@ void CyberPC::setBoolToFalse(){
     justInfected = false;
 }
 
-CyberPC::~CyberPC() {
 
-    delete cyber_worm_;
 
+std::string CyberPC::getOs(){
+    return CyberPC::cyber_pc_os_;
 }
-
+std::vector<std::string> CyberPC::getConnections() {
+    return cyber_pc_connections_;
+};
+CyberWorm* CyberPC::getWorm() {
+    return cyber_worm_;
+};
+void CyberPC::deleteWorm() {
+    if (cyber_worm_ != NULL)
+        delete cyber_worm_;
+}

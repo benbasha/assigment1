@@ -13,7 +13,7 @@ private:
     const int 	cyber_worm_dormancy_time_;
     CyberWorm(); // Prevent the use of an empty constructor
 	// Add your variables here
-	int infectedComputers;
+
 
 
 public:
@@ -22,19 +22,9 @@ public:
 	const int getWormDormancyTime();
 	// Add your own functions here
 
-	std::string getOs() {
-		return cyber_worm_os_;
-	};
-	std::string getName() {
-		return cyber_worm_name_;
-	};
+	std::string getOs();
+	std::string getName();
 
-	void addInfectedComputer();
-
-	virtual ~CyberWorm();
-	int decreaseInfectedComputers() {
-		return --infectedComputers;
-	}
 };
 
 
