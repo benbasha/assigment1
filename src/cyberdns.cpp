@@ -78,15 +78,17 @@ void CyberDNS::infectNetwork(std::string pcName) const{
     std::cout <<"   "<< pcName << " infecting..." <<std::endl;
     for(connections_it = connections.begin(); connections_it != connections.end(); ++connections_it) {
         dns_it = CyberDNS::cyber_DNS_.find(*(connections_it));
-        if (dns_it->second.getOs() == cyberPC.getOs() && !(dns_it->second.isJustInfected() )) {
+        if (dns_it->second.getOs() == cyberPC.getOs() /*&& !(dns_it->second.isJustInfected()*/ ) {
             dns_it->second.Infect(*(cyberPC.getWorm()));
-            //std::cout <<"       " << dns_it->second.getName() << " infected by " << cyberPC.getWorm()->getName() << std::endl;
 
         }
         else if(dns_it->second.getOs() != cyberPC.getOs()){
             std::cout << "      "<< "Worm" << cyberPC.getWorm()->getName() << " is incompatible with " << dns_it->second.getName() << std::endl;
 
         }
+
+        //std::cout << dns_it->second.getName() << "  " << dns_it->second.isJustInfected() << std::endl;
+
     }
 }
 

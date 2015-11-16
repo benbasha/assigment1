@@ -120,7 +120,7 @@ void readEvents(CyberDNS &cyberDNS){
         cyberDNS.decreaseComputersInfectionTime();
 
         //going through the computers and chaning the boolean field to false.
-        cyberDNS.changeBooleanToFalse();
+        //cyberDNS.changeBooleanToFalse();
 
 
         i++;
