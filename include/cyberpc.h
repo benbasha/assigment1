@@ -16,7 +16,6 @@ private:
     CyberWorm * cyber_worm_ = NULL;
     int cyber_pc_time_to_infect_ ;
     CyberPC(); // Prevent the use of an empty constructor
-
 	bool justInfected;
  
 public:
@@ -40,6 +39,8 @@ public:
 		return cyber_worm_;
 	};
 
+	bool isJustInfected();
+	void setBoolToFalse();
 };
 
 

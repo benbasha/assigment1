@@ -78,13 +78,13 @@ void CyberDNS::infectNetwork(std::string pcName) const{
     std::cout <<"   "<< pcName << " infecting..." <<std::endl;
     for(connections_it = connections.begin(); connections_it != connections.end(); ++connections_it) {
         dns_it = CyberDNS::cyber_DNS_.find(*(connections_it));
-        if (dns_it->second.getOs() == cyberPC.getOs()) {
+        if (dns_it->second.getOs() == cyberPC.getOs() && !(dns_it->second.isJustInfected() )) {
             dns_it->second.Infect(*(cyberPC.getWorm()));
             //std::cout <<"       " << dns_it->second.getName() << " infected by " << cyberPC.getWorm()->getName() << std::endl;
 
         }
-        else{
-            std::cout << "      Worm Netbuster is incompatible with " << dns_it->second.getName() << std::endl;
+        else if(dns_it->second.getOs() != cyberPC.getOs()){
+            std::cout << "      "<< "Worm" << cyberPC.getWorm()->getName() << " is incompatible with " << dns_it->second.getName() << std::endl;
 
         }
     }
@@ -93,6 +93,17 @@ void CyberDNS::infectNetwork(std::string pcName) const{
 std::map<const std::string, CyberPC &>::const_iterator CyberDNS::getMapIterator() {
     return CyberDNS::cyber_DNS_.begin();
 };
+
+
+void CyberDNS::changeBooleanToFalse(){
+    std::map<const std::string, CyberPC &>::reverse_iterator it;
+    for(it = CyberDNS::cyber_DNS_.rbegin(); it != CyberDNS::cyber_DNS_.rend(); it++){
+
+        it->second.setBoolToFalse();
+    }
+}
+
+
 
 /*
 public:

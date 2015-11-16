@@ -24,6 +24,7 @@ public:
 	void infectNetwork(std::string pcName) const ;
 
     std::map<const std::string, CyberPC &>::const_iterator getMapIterator();
+	void changeBooleanToFalse();
 };
 
 #endif

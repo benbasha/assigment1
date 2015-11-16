@@ -119,12 +119,17 @@ void readEvents(CyberDNS &cyberDNS){
         //one day left, decrease infects time
         cyberDNS.decreaseComputersInfectionTime();
 
+        //going through the computers and chaning the boolean field to false.
+        cyberDNS.changeBooleanToFalse();
+
 
         i++;
         terminate--;
     }
 
 }
+
+
 
 
 
