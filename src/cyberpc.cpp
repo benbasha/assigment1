@@ -69,31 +69,24 @@ void CyberPC::decreaseComputerInfectionTime(const CyberDNS & server){
         if (CyberPC::cyber_worm_ != NULL) {
             std::cout << "  " << CyberPC::cyber_pc_name_ <<": Worm "<< CyberPC::cyber_worm_->getName() << " is dormant" << std::endl;
         }
-        else{
+        else{//printing that computer is clean
             //std::cout << "    " << CyberPC::cyber_pc_name_ << " is clean, running" <<std::endl;
         }
-
     }
-
-
     else if (CyberPC::cyber_pc_time_to_infect_ == 0 && CyberPC::cyber_worm_ != NULL){
-        cyber_worm_->addInfectedComputer();
+        //cyber_worm_->addInfectedComputer();
         //COMPUTER INFECTED! NOW INFECT NETWORK!!
         Run(server);
-
     }
-
     else if (CyberPC::cyber_pc_time_to_infect_ == 0 && CyberPC::cyber_worm_ == NULL){
         //std::cout << "    " << CyberPC::cyber_pc_name_ << " is clean, running" <<std::endl;
     }
-
 
 }
 
 bool CyberPC::isJustInfected(){
 
         return justInfected;
-
 }
 
 void CyberPC::setBoolToFalse(){
@@ -101,4 +94,9 @@ void CyberPC::setBoolToFalse(){
     justInfected = false;
 }
 
+CyberPC::~CyberPC() {
+
+    delete cyber_worm_;
+
+}
 

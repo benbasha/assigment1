@@ -98,7 +98,6 @@ void readEvents(CyberDNS &cyberDNS){
                 terminate = time - i;
 
             }
-
             v++;
         }
 
@@ -126,6 +125,8 @@ void readEvents(CyberDNS &cyberDNS){
         i++;
         terminate--;
     }
+
+    cyberDNS.completeSimulation();
 
 }
 

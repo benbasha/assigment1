@@ -25,6 +25,7 @@ public:
 
     std::map<const std::string, CyberPC &>::const_iterator getMapIterator();
 	void changeBooleanToFalse();
+	void completeSimulation();
 };
 
 #endif

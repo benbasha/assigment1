@@ -14,11 +14,7 @@ void CyberDNS::AddPC(CyberPC & cyber_pc_) {
 CyberPC & CyberDNS::GetCyberPC(const std::string & cyber_pc_name) const {
     std::map<const std::string, CyberPC &>::const_iterator it = CyberDNS::cyber_DNS_.find(cyber_pc_name);
 
-    //if (it != CyberDNS::cyber_DNS_.end())
         return it->second;
-
-
-
 }
 
 
@@ -37,33 +33,19 @@ std::vector<std::string> CyberDNS::GetCyberPCList() {// Return list of PC's as a
 }
 
 void CyberDNS::decreaseComputersInfectionTime(){
-    //use itertor to go throw the map and update infected PC's infection time
-    std::map<const std::string, CyberPC &>::reverse_iterator it;
 
-    //std::cout << "printing the order which we check the PC's" << std::endl;
-    //std::cout << "" << std::endl;
+    //use iterator to go through the map and update infected PC's infection time
+    std::map<const std::string, CyberPC &>::reverse_iterator it;
 
     for(it = CyberDNS::cyber_DNS_.rbegin(); it != CyberDNS::cyber_DNS_.rend(); it++) {
 
-        //printing the order which we check the PC's
-
-      //  std::cout << it->second.getName() << std::endl;
-
-
         it->second.decreaseComputerInfectionTime(*this);
-
-
-
-       /*f (it->second.decreaseComputerInfectionTimeAndReturnIfGotInfectedNow()){
-            //Time to infect network!
-            //infectNetwork(it->second); //pass cyberPC   ---before my change
-            it->second.Run(*this);
-        }*/
     }
 
 
 }
 
+//going through pc neighbors and infecting them if needed.
 void CyberDNS::infectNetwork(std::string pcName) const{
 
     std::map<const std::string, CyberPC &>::const_iterator dns_it;
@@ -71,16 +53,14 @@ void CyberDNS::infectNetwork(std::string pcName) const{
     CyberPC cyberPC = dns_it->second;
 
     std::vector<std::string> connections(cyberPC.getConnections());
-
-
     std::vector<std::string>::iterator connections_it;
 
     std::cout <<"   "<< pcName << " infecting..." <<std::endl;
     for(connections_it = connections.begin(); connections_it != connections.end(); ++connections_it) {
         dns_it = CyberDNS::cyber_DNS_.find(*(connections_it));
         if (dns_it->second.getOs() == cyberPC.getOs() /*&& !(dns_it->second.isJustInfected()*/ ) {
-            dns_it->second.Infect(*(cyberPC.getWorm()));
-
+            CyberWorm *worm = new CyberWorm(*cyberPC.getWorm());
+            dns_it->second.Infect(*worm);
         }
         else if(dns_it->second.getOs() != cyberPC.getOs()){
             std::cout << "      "<< "Worm" << cyberPC.getWorm()->getName() << " is incompatible with " << dns_it->second.getName() << std::endl;
@@ -102,6 +82,14 @@ void CyberDNS::changeBooleanToFalse(){
     for(it = CyberDNS::cyber_DNS_.rbegin(); it != CyberDNS::cyber_DNS_.rend(); it++){
 
         it->second.setBoolToFalse();
+    }
+}
+
+void CyberDNS::completeSimulation() {
+
+    std::map<const std::string, CyberPC &>::reverse_iterator it;
+    for(it = CyberDNS::cyber_DNS_.rbegin(); it != CyberDNS::cyber_DNS_.rend(); it++) {
+        delete &(it->second);
     }
 }
 
