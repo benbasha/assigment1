@@ -26,8 +26,8 @@ std::vector<std::string> CyberDNS::GetCyberPCList() {// Return list of PC's as a
     std::vector<std::string> pcList;
 
     //use itertor to go throw the map
-    std::map<const std::string, CyberPC &>::const_iterator it;
-    for(it = CyberDNS::cyber_DNS_.begin(); it != CyberDNS::cyber_DNS_.end(); it++) {
+    std::map<const std::string, CyberPC &>::reverse_iterator it;
+    for(it = CyberDNS::cyber_DNS_.rbegin(); it != CyberDNS::cyber_DNS_.rend(); it++) {
         pcList.push_back(it->first);
         std::cout << it->first << std::endl;
 
@@ -38,10 +38,21 @@ std::vector<std::string> CyberDNS::GetCyberPCList() {// Return list of PC's as a
 
 void CyberDNS::decreaseComputersInfectionTime(){
     //use itertor to go throw the map and update infected PC's infection time
-    std::map<const std::string, CyberPC &>::const_iterator it;
-    for(it = CyberDNS::cyber_DNS_.begin(); it != CyberDNS::cyber_DNS_.end(); it++) {
+    std::map<const std::string, CyberPC &>::reverse_iterator it;
 
-        it->second.decreaseComputerInfectionTimeAndReturnIfGotInfectedNow(*this);
+    //std::cout << "printing the order which we check the PC's" << std::endl;
+    //std::cout << "" << std::endl;
+
+    for(it = CyberDNS::cyber_DNS_.rbegin(); it != CyberDNS::cyber_DNS_.rend(); it++) {
+
+        //printing the order which we check the PC's
+
+      //  std::cout << it->second.getName() << std::endl;
+
+
+        it->second.decreaseComputerInfectionTime(*this);
+
+
 
        /*f (it->second.decreaseComputerInfectionTimeAndReturnIfGotInfectedNow()){
             //Time to infect network!
@@ -69,7 +80,7 @@ void CyberDNS::infectNetwork(std::string pcName) const{
         dns_it = CyberDNS::cyber_DNS_.find(*(connections_it));
         if (dns_it->second.getOs() == cyberPC.getOs()) {
             dns_it->second.Infect(*(cyberPC.getWorm()));
-            std::cout <<"       " << dns_it->second.getName() << " infected by " << cyberPC.getWorm()->getName() << std::endl;
+            //std::cout <<"       " << dns_it->second.getName() << " infected by " << cyberPC.getWorm()->getName() << std::endl;
 
         }
         else{

@@ -4,6 +4,7 @@
 
 CyberPC::CyberPC(std::string cyber_pc_os, std::string cyber_pc_name):cyber_pc_os_(cyber_pc_os), cyber_pc_name_(cyber_pc_name){
     justInfected = false;
+    cyber_pc_time_to_infect_ = 0;
     std::cout << getName() + " connected to server" << std::endl;
 }
 
@@ -22,7 +23,7 @@ void CyberPC::Infect(CyberWorm & worm) {
     cyber_pc_time_to_infect_ = worm.getWormDormancyTime();
     justInfected = true;
    // std::cout << "  Hack occured on " + getName() << std::endl;
-    //std::cout << "      " + getName() + " infected by " + worm.getName() << std::endl;
+    std::cout << "      " + getName() + " infected by " + worm.getName() << std::endl;
 }
 
 void CyberPC::Run(const CyberDNS & server) {        // Activate PC and infect others if worm is active
@@ -60,16 +61,28 @@ void CyberPC::Disinfect() {
 
 }
 
-void CyberPC::decreaseComputerInfectionTimeAndReturnIfGotInfectedNow(const CyberDNS & server){
+void CyberPC::decreaseComputerInfectionTime(const CyberDNS & server){
 
     if (CyberPC::cyber_pc_time_to_infect_ > 0) {
         CyberPC::cyber_pc_time_to_infect_--;
+
+        if (CyberPC::cyber_worm_ != NULL) {
+            std::cout << "    " << CyberPC::cyber_pc_name_ <<": Worm "<< CyberPC::cyber_worm_->getName() << " is dormant" << std::endl;
+        }
+        else
+            std::cout << "    " << CyberPC::cyber_pc_name_ << " is clean, running" <<std::endl;
     }
+
 
     else if (CyberPC::cyber_pc_time_to_infect_ == 0 && CyberPC::cyber_worm_ != NULL){
         cyber_worm_->addInfectedComputer();
+        //COMPUTER INFECTED! NOW INFECT NETWORK!!
         Run(server);
-            //COMPUTER INFECTED! NOW INFECT NETWORK!!
+
+    }
+
+    else if (CyberPC::cyber_pc_time_to_infect_ == 0 && CyberPC::cyber_worm_ == NULL){
+        std::cout << "    " << CyberPC::cyber_pc_name_ << " is clean, running" <<std::endl;
     }
 
 
