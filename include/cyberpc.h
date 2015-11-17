@@ -16,7 +16,7 @@ private:
     CyberWorm * cyber_worm_ = NULL;
     int cyber_pc_time_to_infect_ ;
     CyberPC(); // Prevent the use of an empty constructor
-	bool justInfected;
+	bool justInfectedByEvent;
  
 public:
     CyberPC(std::string cyber_pc_os, std::string cyber_pc_name);// Only use this constructor
@@ -33,9 +33,9 @@ public:
 	std::string getOs();
 	std::vector<std::string> getConnections();
 	CyberWorm* getWorm();
-	bool isJustInfected();
+	void setJustInfectedByEvent(bool b);
+	bool isJustInfectedByEvent();
 
-	void setBoolToFalse();
 	void decreaseComputerInfectionTime(const CyberDNS & server); //decrease specific computer infected time and return if the computer is infected now+
 
 	void deleteWorm();

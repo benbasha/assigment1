@@ -3,18 +3,20 @@
 
 
 CyberPC::CyberPC(std::string cyber_pc_os, std::string cyber_pc_name):cyber_pc_os_(cyber_pc_os), cyber_pc_name_(cyber_pc_name) ,
-                                                                     cyber_pc_connections_(std::vector<std::string>(0)),cyber_pc_time_to_infect_(0),justInfected(false)
+                                                                     cyber_pc_connections_(std::vector<std::string>(0)),cyber_pc_time_to_infect_(0),justInfectedByEvent(false)
 {
 
     std::cout << getName() + " connected to server" << std::endl;
+
 }
 
 CyberPC::CyberPC(const CyberPC & pc):cyber_pc_os_(pc.cyber_pc_os_), cyber_pc_name_(pc.cyber_pc_name_),cyber_pc_connections_(pc.cyber_pc_connections_),
-                                     cyber_pc_time_to_infect_(pc.cyber_pc_time_to_infect_),justInfected(pc.justInfected)
+                                     cyber_pc_time_to_infect_(pc.cyber_pc_time_to_infect_),justInfectedByEvent(false)
 {
 
     delete cyber_worm_; //do we need to delete it here?????
     cyber_worm_ = new CyberWorm (*pc.cyber_worm_);
+
 
 }
 
@@ -31,19 +33,22 @@ void CyberPC::AddConnection(std::string second_pc) {
 void CyberPC::Infect(CyberWorm & worm) {
     //std::cout << worm.getName() + "\n\n";
 
+
     if (cyber_worm_ != NULL)
         delete cyber_worm_;
 
     cyber_worm_ = new CyberWorm(worm);
     cyber_pc_time_to_infect_ = worm.getWormDormancyTime();
 
-   // std::cout << "  Hack occured on " + getName() << std::endl;
+    // std::cout << "  Hack occured on " + getName() << std::endl;
     std::cout << "      " + getName() + " infected by " + worm.getName() << std::endl;
+
+    justInfectedByEvent = false;
 }
 
 void CyberPC::Run(const CyberDNS & server) {        // Activate PC and infect others if worm is active
 
-   server.infectNetwork(cyber_pc_name_);
+    server.infectNetwork(cyber_pc_name_);
 
     /*
     std::vector<std::string> connections(this->getConnections());
@@ -102,16 +107,14 @@ void CyberPC::decreaseComputerInfectionTime(const CyberDNS & server){
 
 }
 
-bool CyberPC::isJustInfected(){
 
-        return justInfected;
+void CyberPC::setJustInfectedByEvent(bool b){
+    justInfectedByEvent = b;
 }
 
-void CyberPC::setBoolToFalse(){
-
-    justInfected = false;
+bool CyberPC::isJustInfectedByEvent(){
+    return justInfectedByEvent;
 }
-
 
 
 std::string CyberPC::getOs(){
@@ -128,19 +131,3 @@ void CyberPC::deleteWorm() {
         delete cyber_worm_;
 }
 
-
-/*CyberPC & CyberPC::operator=(const CyberPC &cyberpc)
-{
-    // check for "self assignment" and do nothing in that case
-    if (this == &cyberpc) {
-        return *this;
-    }
-
-    cyber_pc_connections_ = cyberpc.cyber_pc_connections_;
-    cyber_pc_time_to_infect_ = cyberpc.cyber_pc_time_to_infect_;
-    justInfected = cyberpc.justInfected;
-    delete cyber_worm_; //do we need to delete it here?????
-    cyber_worm_ = new CyberWorm (*cyberpc.cyber_worm_);
-
-    return *this;
-}*/

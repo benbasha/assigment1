@@ -23,8 +23,7 @@ public:
 	void decreaseComputersInfectionTime();
 	void infectNetwork(std::string pcName) const ;
 
-    std::map<const std::string, CyberPC &>::const_reverse_iterator getMapIterator();
-	void changeBooleanToFalse();
+    std::map<const std::string, CyberPC &> getMap();
 
 	void completeSimulation();
 };

@@ -79,6 +79,7 @@ void readEvents(CyberDNS &cyberDNS){
                     //calling to Run func in order to activate PC and infect others
                     std::cout <<"   Hack occured on " << computerToInfect->getName() << std::endl;
                     computerToInfect->Infect(*worm);
+                    computerToInfect->setJustInfectedByEvent(true);
                     //std::cout << "      " + computerToInfect->getName() + " infected by " + name << std::endl;
                     //std::cout <<"   " <<computerToInfect->getName() << ": Worm "<< name << " is dormant" << std::endl;
                 }
@@ -104,10 +105,10 @@ void readEvents(CyberDNS &cyberDNS){
             v++;
         }
 
-        std::map<const std::string, CyberPC &>::const_reverse_iterator computer_it = cyberDNS.getMapIterator();
+        std::map<const std::string, CyberPC &>::const_reverse_iterator computer_it = cyberDNS.getMap().rbegin();
         std::vector<CyberExpert*>::iterator expert_it;
         for(expert_it = cyberExperts.begin(); expert_it != cyberExperts.end(); ++expert_it) {
-            if ((*expert_it)->isWorking()) {
+            if ((*expert_it)->isWorking() && computer_it != cyberDNS.getMap().rend()) {
                 for (int i = 0; i < (*expert_it)->getEfficiancy(); i++) {
                     (*expert_it)->Clean(computer_it->second);
                     computer_it++;
@@ -123,9 +124,6 @@ void readEvents(CyberDNS &cyberDNS){
         }
         //one day left, decrease infects time
         cyberDNS.decreaseComputersInfectionTime();
-
-        //going through the computers and chaning the boolean field to false.
-        //cyberDNS.changeBooleanToFalse();
 
 
         i++;
