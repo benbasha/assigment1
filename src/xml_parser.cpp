@@ -79,7 +79,6 @@ void readEvents(CyberDNS &cyberDNS){
                     //calling to Run func in order to activate PC and infect others
                     std::cout <<"   Hack occured on " << computerToInfect->getName() << std::endl;
                     computerToInfect->Infect(*worm);
-                    computerToInfect->setJustInfectedByEvent(true);
                     //std::cout << "      " + computerToInfect->getName() + " infected by " + name << std::endl;
                     //std::cout <<"   " <<computerToInfect->getName() << ": Worm "<< name << " is dormant" << std::endl;
                 }
