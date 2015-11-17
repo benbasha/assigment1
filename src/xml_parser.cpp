@@ -31,19 +31,19 @@ void readNetwork(CyberDNS &cyberDNS){
 
     read_xml("./network.xml", pt);
     BOOST_FOREACH(const ptree::value_type &v, pt.get_child(""))
-                {
-                    if (v.first == "wire") {
-                        CyberPC &pointA = cyberDNS.GetCyberPC(v.second.get<std::string>("pointA"));
-                        CyberPC &pointB = cyberDNS.GetCyberPC(v.second.get<std::string>("pointB"));
+    {
+        if (v.first == "wire") {
+            CyberPC &pointA = cyberDNS.GetCyberPC(v.second.get<std::string>("pointA"));
+            CyberPC &pointB = cyberDNS.GetCyberPC(v.second.get<std::string>("pointB"));
 
-                        std::cout << "Connecting " + pointA.getName() + " to " + pointB.getName() << std::endl;
-                        pointA.AddConnection(pointB.getName());
-                        pointB.AddConnection(pointA.getName());
+            std::cout << "Connecting " + pointA.getName() + " to " + pointB.getName() << std::endl;
+            pointA.AddConnection(pointB.getName());
+            pointB.AddConnection(pointA.getName());
 
-                        //std::cout << pointA.getName() + "<------>" + pointB.getName() << std::endl;
+            //std::cout << pointA.getName() + "<------>" + pointB.getName() << std::endl;
 
-                    }
-                };
+        }
+    };
 
 }
 

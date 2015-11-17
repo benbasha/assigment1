@@ -12,4 +12,4 @@ void readNetwork(CyberDNS &cyberDNS);
 
 void readEvents(CyberDNS &cyberDNS);
 
-#endif //ASSIGMENT1_XML_PARSER_H
+#endif

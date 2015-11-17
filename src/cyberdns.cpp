@@ -59,7 +59,7 @@ void CyberDNS::infectNetwork(std::string pcName) const{
     std::cout <<"   "<< pcName << " infecting..." <<std::endl;
     for(connections_it = connections.begin(); connections_it != connections.end(); ++connections_it) {
         dns_it = CyberDNS::cyber_DNS_.find(*(connections_it));
-        if (dns_it->second.getOs() == cyberPC.getOs() && !dns_it->second.isJustInfectedByEvent()) {
+        if (dns_it->second.getOs() == cyberPC.getOs()) {
             dns_it->second.Infect(*(cyberPC.getWorm()));
         }
         else if(dns_it->second.getOs() != cyberPC.getOs()){

@@ -1,9 +1,5 @@
 <wire>
 	<pointA>Desktop PC</pointA>
-	<pointB>Refrigerator</pointB>
-</wire>
-<wire>
-	<pointA>Desktop PC</pointA>
 	<pointB>Critical Server</pointB>
 </wire>
 <wire>
