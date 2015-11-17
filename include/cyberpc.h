@@ -20,6 +20,7 @@ private:
  
 public:
     CyberPC(std::string cyber_pc_os, std::string cyber_pc_name);// Only use this constructor
+	CyberPC(const CyberPC & pc);
     const std::string getName();
 	void AddConnection(std::string  second_pc);					// Add a connection to this PC
 	void Infect(CyberWorm & worm); 								// Add a worm to this PC
@@ -38,6 +39,8 @@ public:
 	void decreaseComputerInfectionTime(const CyberDNS & server); //decrease specific computer infected time and return if the computer is infected now+
 
 	void deleteWorm();
+
+	CyberPC & operator=(const CyberPC &cyberpc);
 };
 
 

@@ -2,11 +2,12 @@
 
 CyberExpert::CyberExpert(std::string cyber_expert_name, int cyber_expert_work_time, int cyber_expert_rest_time, int cyber_expert_efficiency):
 
-        cyber_expert_name_(cyber_expert_name), cyber_expert_work_time_(cyber_expert_work_time), cyber_expert_rest_time_(cyber_expert_rest_time), cyber_expert_efficiency_(cyber_expert_efficiency) {
+        cyber_expert_name_(cyber_expert_name), cyber_expert_work_time_(cyber_expert_work_time), cyber_expert_rest_time_(cyber_expert_rest_time),
+        cyber_expert_efficiency_(cyber_expert_efficiency),cyber_expert_DaysUntilRest(cyber_expert_work_time) {
 
     std::cout << "  " + cyber_expert_name_ + " clocked in" << std::endl;
 
-    cyber_expert_DaysUntilRest = cyber_expert_work_time;
+
 };
 
 void CyberExpert::Clean(CyberPC & cyber_pc){

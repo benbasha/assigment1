@@ -2,7 +2,8 @@
 
 ///std::map<const std::string, CyberPC &> cyber_DNS_;
 
-CyberDNS::CyberDNS(){
+CyberDNS::CyberDNS():cyber_DNS_()
+{
 
 }
 
