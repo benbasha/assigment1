@@ -3,17 +3,9 @@
 
 
 CyberPC::CyberPC(std::string cyber_pc_os, std::string cyber_pc_name):cyber_pc_os_(cyber_pc_os), cyber_pc_name_(cyber_pc_name) ,
-                                                                     cyber_pc_connections_(std::vector<std::string>(0)),cyber_pc_time_to_infect_(0)
+                                                                     cyber_pc_connections_(std::vector<std::string>(0)),cyber_pc_time_to_infect_(0),cyber_worm_(NULL)
 {
     std::cout << getName() + " connected to server" << std::endl;
-}
-
-
-CyberPC::CyberPC(const CyberPC & pc):cyber_pc_os_(pc.cyber_pc_os_), cyber_pc_name_(pc.cyber_pc_name_),cyber_pc_connections_(pc.cyber_pc_connections_),
-                                     cyber_pc_time_to_infect_(pc.cyber_pc_time_to_infect_)
-{
-    delete cyber_worm_; //do we need to delete it here?????
-    cyber_worm_ = new CyberWorm (*pc.cyber_worm_);
 }
 
 const std::string CyberPC::getName() {

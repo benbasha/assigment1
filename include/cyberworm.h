@@ -15,7 +15,6 @@ private:
 	// Add your variables here
 
 
-
 public:
     CyberWorm(std::string cyber_worm_os, std::string cyber_worm_name, int cyber_worm_dormancy_time);
 	CyberWorm(const CyberWorm& other); //copy constructor;
