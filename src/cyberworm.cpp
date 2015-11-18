@@ -13,7 +13,6 @@ CyberWorm::CyberWorm(const CyberWorm & other):cyber_worm_os_(other.cyber_worm_os
 
 
 const int CyberWorm::getWormDormancyTime(){
-
     return cyber_worm_dormancy_time_;
 }
 

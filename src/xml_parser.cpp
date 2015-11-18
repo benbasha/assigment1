@@ -39,12 +39,8 @@ void readNetwork(CyberDNS &cyberDNS){
             std::cout << "Connecting " + pointA.getName() + " to " + pointB.getName() << std::endl;
             pointA.AddConnection(pointB.getName());
             pointB.AddConnection(pointA.getName());
-
-            //std::cout << pointA.getName() + "<------>" + pointB.getName() << std::endl;
-
         }
     };
-
 }
 
 void readEvents(CyberDNS &cyberDNS){
@@ -56,13 +52,13 @@ void readEvents(CyberDNS &cyberDNS){
     int i = 0;
     int terminate = 0;
 
+    //creating new vector that will hold the experts.
     std::vector<CyberExpert*> cyberExperts;
 
     read_xml("./events.xml", pt);
     boost::property_tree::ptree::iterator v = pt.get_child("").begin();
     while (v != pt.end() || terminate >= 0)
     {
-
         std::cout << "\nDay : " << i << std::endl;
         if (v != pt.end()) {
             if (v->first == "hack") {
@@ -79,10 +75,9 @@ void readEvents(CyberDNS &cyberDNS){
                     //calling to Run func in order to activate PC and infect others
                     std::cout <<"   Hack occured on " << computerToInfect->getName() << std::endl;
                     computerToInfect->Infect(*worm);
-                    //std::cout << "      " + computerToInfect->getName() + " infected by " + name << std::endl;
-                    //std::cout <<"   " <<computerToInfect->getName() << ": Worm "<< name << " is dormant" << std::endl;
-                }
 
+                }
+                //freeing worm memory
                 delete worm;
 
             }
@@ -93,12 +88,10 @@ void readEvents(CyberDNS &cyberDNS){
                 const int efficiency(v->second.get<int>("efficiency"));
 
                 cyberExperts.push_back(new CyberExpert(name, workTime, restTime, efficiency));
-
             }
             else if (v->first == "termination") {
                 int time(v->second.get<int>("time"));
                 terminate = time - i;
-
             }
 
             v++;
@@ -121,17 +114,15 @@ void readEvents(CyberDNS &cyberDNS){
                 delete *expert_it;
 
         }
+
         //one day left, decrease infects time
         cyberDNS.decreaseComputersInfectionTime();
-
 
         i++;
         terminate--;
     }
 
     cyberDNS.completeSimulation();
-
-
 }
 
 

@@ -27,7 +27,6 @@ std::vector<std::string> CyberDNS::GetCyberPCList() {// Return list of PC's as a
     for(it = CyberDNS::cyber_DNS_.rbegin(); it != CyberDNS::cyber_DNS_.rend(); it++) {
         pcList.push_back(it->first);
         std::cout << it->first << std::endl;
-
     }
 
     return pcList;
@@ -56,7 +55,7 @@ void CyberDNS::infectNetwork(std::string pcName) const{
     std::vector<std::string> connections(cyberPC.getConnections());
     std::vector<std::string>::iterator connections_it;
 
-    std::cout <<"   "<< pcName << " infecting..." <<std::endl;
+    std::cout<<"   "<< pcName << " infecting..." <<std::endl;
     for(connections_it = connections.begin(); connections_it != connections.end(); ++connections_it) {
         dns_it = CyberDNS::cyber_DNS_.find(*(connections_it));
         if (dns_it->second.getOs() == cyberPC.getOs()) {
@@ -85,10 +84,3 @@ void CyberDNS::completeSimulation() {
         delete &(it->second);
     }
 }
-
-/*
-public:
-CyberDNS();
-void AddPC(CyberPC & cyber_pc_);
-CyberPC & GetCyberPC(const std::string & cyber_pc_name) const;
-std::vector<std::string> GetCyberPCList(); */
