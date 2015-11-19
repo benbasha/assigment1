@@ -10,6 +10,7 @@ CyberExpert::CyberExpert(std::string cyber_expert_name, int cyber_expert_work_ti
 
 };
 
+
 void CyberExpert::Clean(CyberPC & cyber_pc){
 
     std::cout <<"   " + cyber_expert_name_ + " examining " + cyber_pc.getName() << std::endl;
@@ -42,4 +43,5 @@ int CyberExpert::getEfficiancy(){
 
     return CyberExpert::cyber_expert_efficiency_;
 }
+
 

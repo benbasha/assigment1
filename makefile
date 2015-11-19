@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -g -Wall -Weffc++
+CFLAGS = -g -Wall
 LFLAGS = -L/usr/lib
 
 all:assigment1

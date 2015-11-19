@@ -2,8 +2,10 @@
 
 
 
-CyberPC::CyberPC(std::string cyber_pc_os, std::string cyber_pc_name):cyber_pc_os_(cyber_pc_os), cyber_pc_name_(cyber_pc_name) ,
-                                                                     cyber_pc_connections_(std::vector<std::string>(0)),cyber_pc_time_to_infect_(0),cyber_worm_(NULL)
+CyberPC::CyberPC(std::string cyber_pc_os, std::string cyber_pc_name): cyber_pc_os_(cyber_pc_os), cyber_pc_name_(cyber_pc_name) ,
+                                                                      cyber_pc_connections_(
+                                                                              std::vector<std::string>(0)),
+                                                                      cyber_pc_time_to_infect_(0)
 {
     std::cout << getName() + " connected to server" << std::endl;
 }

@@ -53,7 +53,7 @@ void readEvents(CyberDNS &cyberDNS){
     int terminate = 0;
 
     //creating new vector that will hold the experts.
-    std::vector<CyberExpert> cyberExperts;
+    std::vector<CyberExpert *> cyberExperts;
 
     read_xml("./events.xml", pt);
     boost::property_tree::ptree::iterator v = pt.get_child("").begin();
@@ -87,7 +87,8 @@ void readEvents(CyberDNS &cyberDNS){
                 const int restTime(v->second.get<int>("restTime"));
                 const int efficiency(v->second.get<int>("efficiency"));
 
-                cyberExperts.push_back(CyberExpert(name, workTime, restTime, efficiency));
+                CyberExpert *expert = new CyberExpert(name, workTime, restTime, efficiency);
+                cyberExperts.push_back(expert);
             }
             else if (v->first == "termination") {
                 int time(v->second.get<int>("time"));
@@ -98,17 +99,23 @@ void readEvents(CyberDNS &cyberDNS){
         }
         std::map<const std::string, CyberPC &>  map(cyberDNS.getMap());
         std::map<const std::string, CyberPC &>::reverse_iterator computer_it = map.rbegin();
-        std::vector<CyberExpert>::iterator expert_it;
+        std::vector<CyberExpert *>::iterator expert_it;
         for(expert_it = cyberExperts.begin(); expert_it != cyberExperts.end(); ++expert_it) {
-            if ((expert_it)->isWorking() && computer_it != cyberDNS.getMap().rend()) {
-                for (int i = 0; i < (expert_it)->getEfficiancy(); i++) {
-                    (expert_it)->Clean(computer_it->second);
+
+            if ((*expert_it)->isWorking() && computer_it != cyberDNS.getMap().rend()) {
+
+                for (int i = 0; i < (*expert_it)->getEfficiancy(); i++) {
+                    (*expert_it)->Clean(computer_it->second);
                     computer_it++;
                     //std::cout << (*expert_it)->getName() << "\n\n\n";
                 }
+
             }
 
-            (expert_it)->decreasWorkTime();
+            (*expert_it)->decreasWorkTime();
+
+            if (terminate == 0)
+                delete *expert_it;
 
         }
 

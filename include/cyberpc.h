@@ -13,7 +13,7 @@ private:
 	const std::string cyber_pc_os_;
 	const std::string cyber_pc_name_;
 	std::vector<std::string> cyber_pc_connections_;
-	CyberWorm * cyber_worm_;
+	CyberWorm *cyber_worm_ = NULL;
 	int cyber_pc_time_to_infect_ ;
 	CyberPC(); // Prevent the use of an empty constructor
 
