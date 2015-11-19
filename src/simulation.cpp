@@ -99,12 +99,11 @@ void simulate(CyberDNS &cyberDNS) {
         std::vector<CyberExpert *>::iterator expert_it;
         for (expert_it = cyberExperts.begin(); expert_it != cyberExperts.end(); ++expert_it) {
 
-            if ((*expert_it)->isWorking() && computer_it != cyberDNS.getMap().rend()) {
+            if ((*expert_it)->isWorking()) {
 
-                for (int i = 0; i < (*expert_it)->getEfficiancy(); i++) {
+                for (int i = 0; computer_it != map.rend() && i < (*expert_it)->getEfficiancy(); i++) {
                     (*expert_it)->Clean(computer_it->second);
                     computer_it++;
-                    //std::cout << (*expert_it)->getName() << "\n\n\n";
                 }
 
             }
