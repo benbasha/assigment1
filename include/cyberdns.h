@@ -21,14 +21,15 @@ public:
 													// All access to PC objects should use this function
 													// Do not store pointers elsewhere!
 
+    //our functions
 	virtual ~CyberDNS();
 
 	void decreaseComputersInfectionTime();
-	void infectNetwork(std::string pcName) const ;
+
+    void infectNetwork(std::string pcName) const;
 
     std::map<const std::string, CyberPC &> getMap();
 
-	void completeSimulation();
 };
 
 #endif

@@ -1,7 +1,8 @@
 #include "../include/cyberworm.h"
 
-CyberWorm::CyberWorm(std::string cyber_worm_os, std::string cyber_worm_name, int cyber_worm_dormancy_time):
-        cyber_worm_os_(cyber_worm_os), cyber_worm_name_(cyber_worm_name), cyber_worm_dormancy_time_(cyber_worm_dormancy_time){
+CyberWorm::CyberWorm(std::string cyber_worm_os, std::string cyber_worm_name, int cyber_worm_dormancy_time) :
+        cyber_worm_os_(cyber_worm_os), cyber_worm_name_(cyber_worm_name),
+        cyber_worm_dormancy_time_(cyber_worm_dormancy_time) {
 
 }
 
@@ -16,10 +17,11 @@ const int CyberWorm::getWormDormancyTime(){
     return cyber_worm_dormancy_time_;
 }
 
-std::string CyberWorm::getOs() {
+const std::string CyberWorm::getOs() {
     return cyber_worm_os_;
 };
-std::string CyberWorm::getName() {
+
+const std::string CyberWorm::getName() {
     return cyber_worm_name_;
 };
 

@@ -66,24 +66,20 @@ void CyberPC::decreaseComputerInfectionTime(const CyberDNS & server){
     }
 }
 
-std::string CyberPC::getOs(){
+const std::string CyberPC::getOs() {
     return CyberPC::cyber_pc_os_;
 }
-std::vector<std::string> CyberPC::getConnections() {
+
+const std::vector<std::string> CyberPC::getConnections() {
     return cyber_pc_connections_;
 };
 CyberWorm* CyberPC::getWorm() {
     return cyber_worm_;
 };
-void CyberPC::deleteWorm() {
-    if (cyber_worm_ != NULL)
-        delete cyber_worm_;
-}
 
 CyberPC::~CyberPC() {
 
     if(cyber_worm_ != NULL)
         delete cyber_worm_;
-    std::cout << "cyberPC disractur" << std::endl;
 
 }

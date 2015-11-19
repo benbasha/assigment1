@@ -23,14 +23,6 @@ public:
 	bool isWorking();
 	void decreasWorkTime();
 	int getEfficiancy();
-	// Add your own functions here
-    std::string getName(){
-        return cyber_expert_name_;
-    }
-
-    int startedIsBreak() {
-        return  cyber_expert_DaysUntilRest == 0;
-    }
 
 };
 

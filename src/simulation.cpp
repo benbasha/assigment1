@@ -1,4 +1,4 @@
-#include "../include/xml_parser.h"
+#include "../include/simulation.h"
 #include "boost/property_tree/ptree.hpp"
 #include "boost/property_tree/xml_parser.hpp"
 #include "boost/foreach.hpp"
@@ -10,17 +10,16 @@ void readComputers (CyberDNS &cyberDNS){
     ptree pt;
 
     read_xml("./computers.xml", pt);
-    BOOST_FOREACH(const ptree::value_type &v, pt.get_child(""))
-    {
-        if (v.first == "computer") {
-            //do we need it ????
-            std::cout << "Adding to server: " << v.second.get<std::string>("name") << std::endl;
-            CyberPC * pc = new CyberPC(v.second.get<std::string>("os"),v.second.get<std::string>("name"));
-            cyberDNS.AddPC(*(pc));
-            //std::cout << v.second.get<std::string>("name") << std::endl;
-            //std::cout << v.second.get<std::string>("os") << std::endl;
-        }
-    };
+    BOOST_FOREACH(const ptree::value_type &v, pt.get_child("")) {
+                    if (v.first == "computer") {
+                        //do we need it ????
+                        std::cout << "Adding to server: " << v.second.get<std::string>("name") << std::endl;
+                        CyberPC *pc = new CyberPC(v.second.get<std::string>("os"), v.second.get<std::string>("name"));
+                        cyberDNS.AddPC(*(pc));
+                        //std::cout << v.second.get<std::string>("name") << std::endl;
+                        //std::cout << v.second.get<std::string>("os") << std::endl;
+                    }
+                };
 }
 
 
@@ -30,20 +29,19 @@ void readNetwork(CyberDNS &cyberDNS){
     ptree pt;
 
     read_xml("./network.xml", pt);
-    BOOST_FOREACH(const ptree::value_type &v, pt.get_child(""))
-    {
-        if (v.first == "wire") {
-            CyberPC &pointA = cyberDNS.GetCyberPC(v.second.get<std::string>("pointA"));
-            CyberPC &pointB = cyberDNS.GetCyberPC(v.second.get<std::string>("pointB"));
+    BOOST_FOREACH(const ptree::value_type &v, pt.get_child("")) {
+                    if (v.first == "wire") {
+                        CyberPC &pointA = cyberDNS.GetCyberPC(v.second.get<std::string>("pointA"));
+                        CyberPC &pointB = cyberDNS.GetCyberPC(v.second.get<std::string>("pointB"));
 
-            std::cout << "Connecting " + pointA.getName() + " to " + pointB.getName() << std::endl;
-            pointA.AddConnection(pointB.getName());
-            pointB.AddConnection(pointA.getName());
-        }
-    };
+                        std::cout << "Connecting " + pointA.getName() + " to " + pointB.getName() << std::endl;
+                        pointA.AddConnection(pointB.getName());
+                        pointB.AddConnection(pointA.getName());
+                    }
+                };
 }
 
-void readEvents(CyberDNS &cyberDNS){
+void simulate(CyberDNS &cyberDNS) {
 
     // Create an empty property tree object
     using boost::property_tree::ptree;
@@ -57,8 +55,7 @@ void readEvents(CyberDNS &cyberDNS){
 
     read_xml("./events.xml", pt);
     boost::property_tree::ptree::iterator v = pt.get_child("").begin();
-    while (v != pt.end() || terminate >= 0)
-    {
+    while (v != pt.end() || terminate >= 0) {
         std::cout << "\nDay : " << i << std::endl;
         if (v != pt.end()) {
             if (v->first == "hack") {
@@ -73,7 +70,7 @@ void readEvents(CyberDNS &cyberDNS){
                 CyberPC *computerToInfect = &cyberDNS.GetCyberPC(computer);
                 if (computerToInfect->getOs() == os) {
                     //calling to Run func in order to activate PC and infect others
-                    std::cout <<"   Hack occured on " << computerToInfect->getName() << std::endl;
+                    std::cout << "   Hack occured on " << computerToInfect->getName() << std::endl;
                     computerToInfect->Infect(*worm);
 
                 }
@@ -97,10 +94,10 @@ void readEvents(CyberDNS &cyberDNS){
 
             v++;
         }
-        std::map<const std::string, CyberPC &>  map(cyberDNS.getMap());
+        std::map<const std::string, CyberPC &> map(cyberDNS.getMap());
         std::map<const std::string, CyberPC &>::reverse_iterator computer_it = map.rbegin();
         std::vector<CyberExpert *>::iterator expert_it;
-        for(expert_it = cyberExperts.begin(); expert_it != cyberExperts.end(); ++expert_it) {
+        for (expert_it = cyberExperts.begin(); expert_it != cyberExperts.end(); ++expert_it) {
 
             if ((*expert_it)->isWorking() && computer_it != cyberDNS.getMap().rend()) {
 
@@ -125,8 +122,21 @@ void readEvents(CyberDNS &cyberDNS){
         i++;
         terminate--;
     }
+}
+//cyberDNS.completeSimulation();
 
-    //cyberDNS.completeSimulation();
+void runSimulation(CyberDNS &cyberDNS) {
+
+    readComputers(cyberDNS);
+
+    std::cout << "\n\n";
+
+    readNetwork(cyberDNS);
+
+    std::cout << "\n\n";
+
+    simulate(cyberDNS);
+
 }
 
 
