@@ -25,6 +25,7 @@ public:
 	void Infect(CyberWorm & worm); 								// Add a worm to this PC
 	void Run(const CyberDNS & server); 							// Activate PC and infect others if worm is active	
 	void Disinfect();
+	virtual ~CyberPC();
 
 	// called by cyber expert, disinfect PC
 

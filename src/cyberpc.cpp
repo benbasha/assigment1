@@ -80,3 +80,9 @@ void CyberPC::deleteWorm() {
         delete cyber_worm_;
 }
 
+CyberPC::~CyberPC() {
+
+    if(cyber_worm_ != NULL)
+        delete cyber_worm_;
+
+}

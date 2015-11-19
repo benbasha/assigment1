@@ -126,7 +126,7 @@ void readEvents(CyberDNS &cyberDNS){
         terminate--;
     }
 
-    cyberDNS.completeSimulation();
+    //cyberDNS.completeSimulation();
 }
 
 

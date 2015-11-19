@@ -20,6 +20,9 @@ public:
 	std::vector<std::string> GetCyberPCList(); 		// Return list of PC's as a vector of strings.
 													// All access to PC objects should use this function
 													// Do not store pointers elsewhere!
+
+	virtual ~CyberDNS();
+
 	void decreaseComputersInfectionTime();
 	void infectNetwork(std::string pcName) const ;
 

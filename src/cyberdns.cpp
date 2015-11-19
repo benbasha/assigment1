@@ -84,3 +84,13 @@ void CyberDNS::completeSimulation() {
         delete &(it->second);
     }
 }
+
+CyberDNS::~CyberDNS(){
+
+    std::map<const std::string, CyberPC &>::reverse_iterator it;
+    for(it = CyberDNS::cyber_DNS_.rbegin(); it != CyberDNS::cyber_DNS_.rend(); it++) {
+
+        delete &(it->second);
+    }
+
+}
