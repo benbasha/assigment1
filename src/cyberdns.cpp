@@ -50,19 +50,20 @@ void CyberDNS::infectNetwork(std::string pcName) const{
 
     std::map<const std::string, CyberPC &>::const_iterator dns_it;
     dns_it = CyberDNS::cyber_DNS_.find(pcName);
-    CyberPC cyberPC = dns_it->second;
+    CyberPC *cyberPC = &dns_it->second;
 
-    std::vector<std::string> connections(cyberPC.getConnections());
+    std::vector<std::string> connections(cyberPC->getConnections());
     std::vector<std::string>::iterator connections_it;
 
     std::cout<<"   "<< pcName << " infecting..." <<std::endl;
     for(connections_it = connections.begin(); connections_it != connections.end(); ++connections_it) {
         dns_it = CyberDNS::cyber_DNS_.find(*(connections_it));
-        if (dns_it->second.getOs() == cyberPC.getOs()) {
-            dns_it->second.Infect(*(cyberPC.getWorm()));
+        if (dns_it->second.getOs() == cyberPC->getOs()) {
+            dns_it->second.Infect(*(cyberPC->getWorm()));
         }
-        else if(dns_it->second.getOs() != cyberPC.getOs()){
-            std::cout << "      "<< "Worm" << cyberPC.getWorm()->getName() << " is incompatible with " << dns_it->second.getName() << std::endl;
+        else if (dns_it->second.getOs() != cyberPC->getOs()) {
+            std::cout << "      " << "Worm" << cyberPC->getWorm()->getName() << " is incompatible with " <<
+            dns_it->second.getName() << std::endl;
 
         }
 
@@ -89,7 +90,7 @@ CyberDNS::~CyberDNS(){
 
     std::map<const std::string, CyberPC &>::reverse_iterator it;
     for(it = CyberDNS::cyber_DNS_.rbegin(); it != CyberDNS::cyber_DNS_.rend(); it++) {
-
+        //it->second.deleteWorm();
         delete &(it->second);
     }
 

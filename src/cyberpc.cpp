@@ -84,5 +84,6 @@ CyberPC::~CyberPC() {
 
     if(cyber_worm_ != NULL)
         delete cyber_worm_;
+    std::cout << "cyberPC disractur" << std::endl;
 
 }
