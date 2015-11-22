@@ -62,7 +62,7 @@ void CyberDNS::infectNetwork(std::string pcName) const{
             dns_it->second.Infect(*(cyberPC->getWorm()));
         }
         else if (dns_it->second.getOs() != cyberPC->getOs()) {
-            std::cout << "      " << "Worm" << cyberPC->getWorm()->getName() << " is incompatible with " <<
+            std::cout << "      " << "Worm " << cyberPC->getWorm()->getName() << " is incompatible with " <<
             dns_it->second.getName() << std::endl;
 
         }

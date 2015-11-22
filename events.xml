@@ -1,63 +1,15 @@
 <hack>
- <computer>Desktop PC</computer>
- <wormName>Netbuster</wormName>
- <wormDormancy>1</wormDormancy>
- <wormOs>Linux</wormOs>
-</hack>
-<hack>
  <computer>Refrigerator</computer>
- <wormName>Netbuster</wormName>
- <wormDormancy>1</wormDormancy>
- <wormOs>Linux</wormOs>
-</hack>
-<clock-in>
-<name>R2D2</name>
-<workTime>2</workTime>
-<restTime>4</restTime>
-<efficiency>1</efficiency>
-</clock-in>
-<hack>
- <computer>Desktop PC</computer>
- <wormName>Netbuster</wormName>
- <wormDormancy>1</wormDormancy>
+ <wormName>Nuni</wormName>
+ <wormDormancy>0</wormDormancy>
  <wormOs>Linux</wormOs>
 </hack>
 <clock-in>
 <name>Inigo Montoya</name>
 <workTime>1</workTime>
-<restTime>1</restTime>
-<efficiency>7</efficiency>
+<restTime>3</restTime>
+<efficiency>1</efficiency>
 </clock-in>
-<hack>
- <computer>Microwave</computer>
- <wormName>Netbuster</wormName>
- <wormDormancy>1</wormDormancy>
- <wormOs>Linux</wormOs>
-</hack>
-<hack>
- <computer>Cellphone</computer>
- <wormName>Netbuster</wormName>
- <wormDormancy>1</wormDormancy>
- <wormOs>Linux</wormOs>
-</hack>
-<clock-in>
- <name>Einav Genad Galili</name>
- <workTime>3</workTime>
- <restTime>1</restTime>
- <efficiency>3</efficiency>
-</clock-in>
-<hack>
-<computer>Desktop PC</computer>
-<wormName>Netbuster</wormName>
-<wormDormancy>1</wormDormancy>
-<wormOs>Linux</wormOs>
-</hack>
-<hack>
-<computer>Refrigerator</computer>
-<wormName>Netbuster</wormName>
-<wormDormancy>1</wormDormancy>
-<wormOs>Linux</wormOs>
-</hack>
 <termination>
-<time>20</time>
+	<time>10</time>
 </termination>
