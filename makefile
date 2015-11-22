@@ -5,10 +5,10 @@ LFLAGS = -L/usr/lib
 all:assigment1
 
 assigment1: bin/main.o bin/cyberpc.o bin/cyberdns.o bin/simulation.o bin/cyberworm.o bin/cyberexpert.o
-	$(CC) -o bin/main bin/main.o bin/cyberpc.o bin/cyberdns.o bin/simulation.o bin/cyberworm.o bin/cyberexpert.o $(LFLAGS)
+	$(CC) -o bin/cyber bin/main.o bin/cyberpc.o bin/cyberdns.o bin/simulation.o bin/cyberworm.o bin/cyberexpert.o $(LFLAGS)
 
-bin/main.o: main.cpp
-	$(CC) $(CFLAGS) -c -Lincluse -o bin/main.o main.cpp
+bin/main.o: src/main.cpp
+	$(CC) $(CFLAGS) -c -Lincluse -o bin/main.o src/main.cpp
 
 bin/cyberdns.o: src/cyberdns.cpp
 	$(CC) $(CFLAGS)	-c -Lincluse -o bin/cyberdns.o src/cyberdns.cpp
