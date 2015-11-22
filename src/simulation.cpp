@@ -56,7 +56,7 @@ void simulate(CyberDNS &cyberDNS) {
     read_xml("./events.xml", pt);
     boost::property_tree::ptree::iterator v = pt.get_child("").begin();
     while (v != pt.end() || terminate >= 0) {
-        std::cout << "\nDay : " << i << std::endl;
+        std::cout << "Day : " << i << std::endl;
         if (v != pt.end()) {
             if (v->first == "hack") {
                 //new worm details
@@ -127,13 +127,7 @@ void simulate(CyberDNS &cyberDNS) {
 void runSimulation(CyberDNS &cyberDNS) {
 
     readComputers(cyberDNS);
-
-    std::cout << "\n\n";
-
     readNetwork(cyberDNS);
-
-    std::cout << "\n\n";
-
     simulate(cyberDNS);
 
 }

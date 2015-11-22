@@ -10,12 +10,24 @@
  <wormDormancy>1</wormDormancy>
  <wormOs>Linux</wormOs>
 </hack>
+<clock-in>
+<name>R2D2</name>
+<workTime>2</workTime>
+<restTime>4</restTime>
+<efficiency>1</efficiency>
+</clock-in>
 <hack>
  <computer>Desktop PC</computer>
  <wormName>Netbuster</wormName>
  <wormDormancy>1</wormDormancy>
  <wormOs>Linux</wormOs>
 </hack>
+<clock-in>
+<name>Inigo Montoya</name>
+<workTime>1</workTime>
+<restTime>1</restTime>
+<efficiency>7</efficiency>
+</clock-in>
 <hack>
  <computer>Microwave</computer>
  <wormName>Netbuster</wormName>
@@ -34,6 +46,18 @@
  <restTime>1</restTime>
  <efficiency>3</efficiency>
 </clock-in>
+<hack>
+<computer>Desktop PC</computer>
+<wormName>Netbuster</wormName>
+<wormDormancy>1</wormDormancy>
+<wormOs>Linux</wormOs>
+</hack>
+<hack>
+<computer>Refrigerator</computer>
+<wormName>Netbuster</wormName>
+<wormDormancy>1</wormDormancy>
+<wormOs>Linux</wormOs>
+</hack>
 <termination>
-	<time>10</time>
+<time>20</time>
 </termination>

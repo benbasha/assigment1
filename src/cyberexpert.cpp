@@ -27,14 +27,16 @@ bool CyberExpert::isWorking(){
 
 void CyberExpert::decreasWorkTime(){
 
-    CyberExpert::cyber_expert_DaysUntilRest -- ;
-    if (cyber_expert_DaysUntilRest == 0) {
-        std::cout <<"   "+ cyber_expert_name_ + " is taking a break" << std::endl;
-    }
+    if (cyber_expert_rest_time_ != 0) {
+        CyberExpert::cyber_expert_DaysUntilRest--;
+        if (cyber_expert_DaysUntilRest == 0) {
+            std::cout << "   " + cyber_expert_name_ + " is taking a break" << std::endl;
+        }
 
-    if (CyberExpert::cyber_expert_DaysUntilRest == ( -1 * (CyberExpert::cyber_expert_rest_time_)) ){
-        CyberExpert::cyber_expert_DaysUntilRest = CyberExpert::cyber_expert_work_time_;
-        std::cout <<"   " + cyber_expert_name_ + " is back to work" << std::endl;
+        if (CyberExpert::cyber_expert_DaysUntilRest == (-1 * (CyberExpert::cyber_expert_rest_time_))) {
+            CyberExpert::cyber_expert_DaysUntilRest = CyberExpert::cyber_expert_work_time_;
+            std::cout << "   " + cyber_expert_name_ + " is back to work" << std::endl;
+        }
     }
 }
 
