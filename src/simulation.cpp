@@ -68,11 +68,14 @@ void simulate(CyberDNS &cyberDNS) {
 
                 //check if computer in worm favorite os and infect it
                 CyberPC *computerToInfect = &cyberDNS.GetCyberPC(computer);
+
+                std::cout << "   Hack occured on " << computerToInfect->getName() << std::endl;
                 if (computerToInfect->getOs() == os) {
                     //calling to Run func in order to activate PC and infect others
-                    std::cout << "   Hack occured on " << computerToInfect->getName() << std::endl;
                     computerToInfect->Infect(*worm);
-
+                }
+                else{
+                    std::cout << "      " << "Worm " << name << " is incompatible with "<< computerToInfect->getName() <<std::endl;
                 }
                 //freeing worm memory
                 delete worm;
